@@ -1,4 +1,7 @@
 export const cardData = [
-    {side1: 'I am side 1 for card 1', side2: 'I am side 2 for card 1'},
-    {side1: 'I am side 1 for card 2', side2: 'I am side 2 for card 2'},
+    {side1: 'cat', side2: 'kitten'},
+    {side1: 'puppy', side2: 'dog'},
+    {side1: 'calf', side2: 'cow'},
+    {side1: 'egg', side2: 'chicken'},
+    {side1: 'foal', side2: 'horse'}
 ]

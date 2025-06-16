@@ -12,8 +12,18 @@ function App() {
   const flipCard = () => setCardValue(cardValue === currentCard.side1 ? currentCard.side2 : currentCard.side1);
 
   //chooses a random index to display next
-  //only need a forward button
-  //
+  const chooseNextCard = (max) => { 
+    return Math.floor(Math.random() * max);
+  }
+
+  //combine choosing new index and refreshing disply with said index
+  const newCardProcedure = () => {
+    let newIndex = chooseNextCard(numOfCards);
+    setIndex(newIndex);
+    setCardValue(cardData[newIndex].side1);
+  }
+
+  //would love to animate a flashcard slide in/out
 
   return (
     <>
@@ -27,14 +37,7 @@ function App() {
 
         <br></br>
 
-        <button onClick={flipCard}>
-          card side is {currentCard.side1}
-        </button>
-
-        <br></br>
-        
-        <button onClick={() => setIndex(index - 1)}>Prev</button>
-        <button onClick={() => setIndex(index + 1)}>Next</button>
+        <button onClick={() => newCardProcedure()}>Next</button>
 
       </div>
     </>
