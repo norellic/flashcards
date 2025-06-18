@@ -28,6 +28,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-image: url(https://ncseagrant.ncsu.edu/currents/wp-content/uploads/sites/8/2019/01/RJM_1778_crop.jpg);
 }
 
 h1 {

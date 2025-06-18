@@ -42,7 +42,7 @@ function App() {
 
   return (
     <>
-      <h1>Moths of North Carolina</h1>
+      <h1 class="glow">Moths of North Carolina</h1>
       <h2>Test your knowledge of our local fuzzies</h2>
       <h3>Number of Cards: {numOfCards}</h3>
       <div className={"flashcard-container"}>
