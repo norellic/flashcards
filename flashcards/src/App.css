@@ -1,8 +1,53 @@
 #root {
   max-width: 1280px;
+  min-height: 720px;
+  width: 95%;
+  height: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 4%;
   text-align: center;
+}
+
+h1, h2, h3 {
+  margin: 1% 0;
+}
+
+#flashcard {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 50%;
+  height: 250px;
+  margin: auto;
+  padding: 40px;
+
+  transform: rotate(0deg);
+  transform-origin: bottom left;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+  transition-duration: .3s;
+}
+#flashcard:hover {
+  transform: rotate(-3deg);
+}
+
+button {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.931);
+  color: darkblue;
+}
+
+#nextButton {
+  width: 10%;
+  transform: translateX(0);
+  transition-property: transform, background-color;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}
+#nextButton:hover {
+  transform: translateX(15px);
+  background-color: greenyellow; 
 }
 
 .logo {
@@ -31,12 +76,4 @@
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

@@ -11,35 +11,40 @@ function App() {
   const [cardValue, setCardValue] = useState(currentCard.side1);
   const flipCard = () => setCardValue(cardValue === currentCard.side1 ? currentCard.side2 : currentCard.side1);
 
-  //chooses a random index to display next
-  const chooseNextCard = (max) => { 
-    return Math.floor(Math.random() * max);
+  //chooses a new random index to display next
+  const chooseNextCard = (max, prevIndex) => {
+    if (max <= 1) {
+      return 0; // Only one card, so return its index
+    }
+    let newIndex = Math.floor(Math.random() * max);
+    while (newIndex === prevIndex) {
+      newIndex = Math.floor(Math.random() * max);
+    }
+    prevIndex = newIndex;
+    return newIndex
   }
-
-  //combine choosing new index and refreshing disply with said index
+  
+  //combine choosing new index and refreshing display with said index
   const newCardProcedure = () => {
-    let newIndex = chooseNextCard(numOfCards);
+    let newIndex = chooseNextCard(numOfCards, index);
     setIndex(newIndex);
     setCardValue(cardData[newIndex].side1);
   }
 
   //would love to animate a flashcard slide in/out
+  //maybe some stuff floating in the bg...
 
   return (
     <>
       <h1>Flashcards App</h1>
       <h2>Short Description</h2>
       <h3>Number of Cards: {numOfCards}</h3>
-      <div className="card">
+      <div id="flashcard">
         <button onClick={flipCard}>
-          card side is {cardValue}
+          {cardValue}
         </button>
-
-        <br></br>
-
-        <button onClick={() => newCardProcedure()}>Next</button>
-
       </div>
+      <button id="nextButton" onClick={() => newCardProcedure()}>Next</button>
     </>
   )
 }
