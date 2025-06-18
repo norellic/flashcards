@@ -17,7 +17,7 @@ export const cardData = [
     {side1: 'What moth is this?', 
     side2: 'Rosy Maple Moth',
     color: 'yellow',
-    image: 'https://inaturalist-open-data.s3.amazonaws.com/photos/4956/small.jpg'},
+    image: 'https://inaturalist-open-data.s3.amazonaws.com/photos/6561/small.jpg'},
 
     {side1: 'What moth is this?', 
     side2: 'Noctuid Moth',
