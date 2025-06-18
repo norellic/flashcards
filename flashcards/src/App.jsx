@@ -7,9 +7,17 @@ function App() {
   const[index, setIndex] = useState(0);
   let currentCard = cardData[index];
   let numOfCards = cardData.length;
-
+  const [isFlipped, setIsFlipped] = useState(false);
   const [cardValue, setCardValue] = useState(currentCard.side1);
-  const flipCard = () => setCardValue(cardValue === currentCard.side1 ? currentCard.side2 : currentCard.side1);
+
+  const flipCard = () => {
+    if (!isFlipped) { // If currently showing side1, prepare to show side2
+      setCardValue(currentCard.side2);
+    } else { // If currently showing side2, prepare to show side1
+      setCardValue(currentCard.side1);
+    }
+    setIsFlipped(prevIsFlipped => !prevIsFlipped);
+  };
 
   //chooses a new random index to display next
   const chooseNextCard = (max, prevIndex) => {
@@ -29,22 +37,32 @@ function App() {
     let newIndex = chooseNextCard(numOfCards, index);
     setIndex(newIndex);
     setCardValue(cardData[newIndex].side1);
+    setIsFlipped(false); // Reset flip state for the new card
   }
-
-  //would love to animate a flashcard slide in/out
-  //maybe some stuff floating in the bg...
 
   return (
     <>
-      <h1>Flashcards App</h1>
-      <h2>Short Description</h2>
+      <h1>Moths of North Carolina</h1>
+      <h2>Test your knowledge of our local fuzzies</h2>
       <h3>Number of Cards: {numOfCards}</h3>
-      <div id="flashcard">
-        <button onClick={flipCard}>
-          {cardValue}
-        </button>
+      <div className={"flashcard-container"}>
+      <div
+        id="flashcard"
+        className={isFlipped ? 'flipped' : ''}
+        onClick={flipCard}
+      >
+        <div className={"card-face front " + currentCard.color}>
+          {currentCard.side1}
+          <img src={currentCard.image}/>
+        </div>
+        <div className={"card-face back " + currentCard.color}>
+          {currentCard.side2}
+        </div>
       </div>
-      <button id="nextButton" onClick={() => newCardProcedure()}>Next</button>
+    </div>
+
+    <button id="nextButton" onClick={newCardProcedure}>Next</button>
+
     </>
   )
 }
